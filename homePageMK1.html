@@ -30,7 +30,7 @@ pretty straightforward so I didn't see the need to comment, but if anyone has an
 
 <body>
     <div id="header">
-        <img src="prolinkdesign.png" alt="ProLink Logo" />
+        <!-- <img id="ProLinkLogo" src="prolinkdesign.png" alt="ProLink Logo" /> -->
         <h1>ProLink</h1>
     </div>
     
@@ -51,9 +51,12 @@ pretty straightforward so I didn't see the need to comment, but if anyone has an
         </fieldset>
     </div>
     
-    <fieldset id="search">
-        <p>Search: <input type="text"></p>
-    </fieldset>
+    <div class="searchbox">
+        <form name="search">
+            <input type="text" class="input" name="txt" onmouseout="this.value = ' '; this.blur()">
+        </form>
+        <i class="fas fa-search"></i>
+    </div>
 </body>
 
 </html>
