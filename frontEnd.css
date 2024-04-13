@@ -37,6 +37,7 @@ body img {
 #container {
     display: flex;
 }
+/* Inspiration for Search Bar: https://codepen.io/ShortCode/pen/jOrBeOw */
 .searchbox {
     position: relative;
 }

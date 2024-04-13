@@ -1,0 +1,30 @@
+/* The actual feed design with new post button */
+.forum-feed {
+    margin-top: 2rem;
+}
+.new-post-button {
+    background-color: #132833;
+    color: #72a98b;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 6px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.new-post-button:hover {
+    background-color: #253b45;
+}
+.new-post-button i {
+    margin-left: 0.5rem;
+}
+/* Top right buttons designs */
+.notification-button, .messages-button, .settings-button {
+    color:#72a98b;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin-left: 1rem;
+    cursor: pointer;
+}
