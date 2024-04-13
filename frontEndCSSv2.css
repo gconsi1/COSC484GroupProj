@@ -1,14 +1,16 @@
 /* The actual feed design with new post button */
 .forum-feed {
-    margin-top: 2rem;
+    margin-top: 20px;
+    border-top: 2px solid;
+    padding-top: 20px;
 }
 .new-post-button {
     background-color: #132833;
     color: #72a98b;
     border: none;
-    padding: 1rem 2rem;
-    border-radius: 6px;
-    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -25,7 +27,7 @@
     background-color: transparent;
     border: none;
     padding: 0;
-    margin-left: 1rem;
+    margin-left: 10px;
     cursor: pointer;
 }
 .webpage-header {
@@ -57,7 +59,10 @@
     display: flex;
     align-items: center;
 }
-.search-bar input[type="text"] {
+/* .search-bar input[type="text"] {
     padding: 5px;
     margin-right: 5px;
+} */
+.user-settings-button {
+
 }
