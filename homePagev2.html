@@ -44,16 +44,20 @@
             </div>
             <div class="user-settings">
                 <!-- Right side of nav bar: User profile, DMs, Notification -->
-                <div>
-                    <button id="user-profile-button" class="user-profile-button">
-                        <span>Username</span>
-                        <span>Profile Picture</span>
-                    </button>
-                    <!-- <div class="dropdown-menu">
-                        <button class="settings-button">
-                            <i class="fas fa-cog"></i>
-                        </button>
-                    </div> -->
+                <div class="wrapper">
+                    <form id="loginForm">
+                        <h1>Login</h1>
+                        <div class="input-box">
+                            <input type="text" placeholder="Username" required>
+                        </div>
+                        <div class="input-box">
+                            <input type="password" placeholder="Password" required>
+                        </div>
+                        <div class="remember">
+                            <label><input type="checkbox">Remember me</label>
+                        </div>
+                        <button type="submit" class="loginButton">Login</button>
+                    </form>
                 </div>
             </div>
             <div class="user-settings-buttons">

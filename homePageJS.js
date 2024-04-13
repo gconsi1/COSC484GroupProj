@@ -1,4 +1,4 @@
-//JavaScript to create new post and siplay it in "Latest Posts" section
+//JavaScript to create new post and display it in "Latest Posts" section
 document.addEventListener('DOMContentLoaded', function() {
     var createPostForm = document.getElementById("createPostForm");
     var postContent = document.getElementById("postContent");
@@ -17,4 +17,20 @@ document.addEventListener('DOMContentLoaded', function() {
             postContent.value = ''; // Clear the input field
         }
     });
+});
+// JavaScript to hide the Username and Profile Picture card
+document.addEventListener('DOMContentLoaded', function() {
+    var loginForm = document.getElementById("loginForm");
+    loginForm.addEventListener('submit', function(event) {
+        var username = loginForm.querySelector('input[type="text"]').value;
+
+        //TODO: send a request to database to get username and profile picture
+
+        //Hide the login form
+        loginForm.parentNode.style.display = 'none';
+
+        var userProfileButton = document.getElementById('user-profile-button');
+        userProfileButton.innerHTML = '<span>${username}</span><span>Profile Picture</span>';
+        userProfileButton.style.display = 'inline-flex';
+    })
 });
