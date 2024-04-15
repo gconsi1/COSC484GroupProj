@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - ProLink</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="manifest" href="site.webmanifest" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+    <link rel="stylesheet" type="text/css" href="frontEndCSSv2.css" />
+</head>
+
+<body>
+    <body>
+        <div class="webpage">
+            <header class="webpage-header">
+                <div class="webpage-header-logo">
+                    <div class="logo">
+                        <span class="logo-icon">
+                            <img id="ProLinkLogo" src="prolinkdesign.png" alt="ProLink Logo" />
+                        </span>
+                        <h1 class="ProLink-name">
+                            <span>ProLink</span>
+                        </h1>
+                    </div>
+                </div>
+                <div class="header-navigation">
+                    <!-- TODO: Navigation bar -->
+                    <!-- Middle Home Button -->
+                    <a href="homePagev2.html" class="home-button" title="Home">
+                        <i class="fas fa-home"></i>
+                    </a>
+                    
+                </div>
+                <div class="user-settings">
+                    <!-- Right side of nav bar: User profile, DMs, Notification -->
+                    <div class="wrapper">
+                        <form id="loginForm">
+                            <h1>Login</h1>
+                            <div class="input-box">
+                                <input type="text" placeholder="Username" required>
+                            </div>
+                            <div class="input-box">
+                                <input type="password" placeholder="Password" required>
+                            </div>
+                            <div class="remember">
+                                <label><input type="checkbox">Remember me</label>
+                            </div>
+                            <button type="submit" class="loginButton">Login</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="user-settings-buttons">
+                    <button class="notification-button">
+                        <i class="fas fa-bell"></i>
+                    </button>
+                    <button class="messages-button">
+                        <i class="fas fa-envelope"></i>
+                    </button>
+                    <a href="settingsPage.html">
+                        <button class="settings-button">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                    </a>
+                </div>
+            </header>
+        <!-- Settings form -->
+        <div class="settings-content">
+            <section class="profile-settings">
+                <h2>Change Profile Info</h2>
+                <form id="profileSettingsForm">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" placeholder="Username">
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Email">
+
+                    <button type="submit">Save Profile Settings</button>
+                </form>
+            </section>
+
+            <section class="account-settings">
+                <h2>Change Account Settings</h2>
+                <form id="accountSettingsForm">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Password">
+
+                    <button type="submit">Save Account Settings</button>
+                </form>
+            </section>
+        </div>
+    </div>
+
+    <script src="settingsPageJS.js"></script>
+</body>
+
+</html>
