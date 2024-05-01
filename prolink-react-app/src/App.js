@@ -7,7 +7,31 @@ const App = () => {
     const handleCreatePost = (event) => {
         event.preventDefault(); // Prevent the default form submission
         
-        // Logic for creating a new post
+        // Logic for sending login data to backend
+        //handle sending login data
+    const[userId, setUserId]=useState('');
+    const[password, setPassword]=useState('');
+
+    function handleLogin(event){
+        event.preventDefault();
+        console.log('clicked');
+
+        let userData = {
+            userId:userId,
+            password:password
+        }
+
+        fetch("/api/login", {
+            method: "post",
+            headers: {
+            "Content-Type": "application/json"
+            },
+            body: JSON.stringify(userData)
+
+        }).then(response=>response.json()).then(data=>{
+            console.log(data);
+        })
+    }
     };
     return (
         <Router>
@@ -33,19 +57,21 @@ const App = () => {
                     </div>
                     <div className="user-settings">
                         <div className="wrapper">
-                            <form id="loginForm">
-                                <h1>Login</h1>
-                                <div className="input-box">
-                                    <input type="text" placeholder="Username" required />
-                                </div>
-                                <div className="input-box">
-                                    <input type="password" placeholder="Password" required />
-                                </div>
-                                <div className="remember">
-                                    <label><input type="checkbox" />Remember me</label>
-                                </div>
-                                <button type="submit" className="loginButton">Login</button>
-                            </form>
+                            <form id="loginForm" onSubmit={handleLogin}>
+                            <h1>Login</h1>
+                            <div className="input-box">
+                                <input type="text" placeholder="Username" onChange={e=>setUserId(e.target.value)}
+                                required />
+                            </div>
+                            <div className="input-box">
+                                <input type="password" placeholder="Password" onChange={e=>setPassword(e.target.value)}
+                                required />
+                            </div>
+                            <div className="remember">
+                                <label><input type="checkbox" />Remember me</label>
+                            </div>
+                            <button type="submit" className="loginButton">Login</button>
+                        </form>
                         </div>
                     </div>
                     <div className="user-settings-buttons">
