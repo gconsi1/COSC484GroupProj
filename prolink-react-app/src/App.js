@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import ProfilePage from './ProfilePage';
 import './frontEndCSSv2.css'; // Import your CSS file
 
@@ -9,7 +9,6 @@ const App = () => {
         
         // Logic for creating a new post
     };
-
     return (
         <Router>
             <div className="webpage">
@@ -50,7 +49,6 @@ const App = () => {
                         </div>
                     </div>
                     <div className="user-settings-buttons">
-                        {/* Use Link component tp route to other pages */}
                         <Link to="/notifications" className="notification-button">
                             Notifications
                         </Link>
@@ -63,10 +61,9 @@ const App = () => {
                     </div>
                 </header>
                 <div className="container">
-                    {/* Define routes for pages */}
-                    <Route path="/notifications" render={() => <div>Notifications Page</div>} />
-                    <Route path="/messages" render={() => <div>Messages Page</div>} />
-                    <Route path="/profile" component={ProfilePage} />
+                    <Routes>
+                        <Route path="/profile" element={<ProfilePage />} />
+                    </Routes>
                     <div className="forum-feed">
                         <button className="new-post-button" onClick={handleCreatePost}>
                             New post
