@@ -1,4 +1,6 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import ProfilePage from './ProfilePage';
 import './frontEndCSSv2.css'; // Import your CSS file
 
 const App = () => {
@@ -25,7 +27,7 @@ const App = () => {
                     <div className="search-bar">
                         <input type="text" placeholder="Search" />
                         <button className="search-button">
-                            <i className="fas fa-search"></i>
+                            Search
                         </button>
                     </div>
                 </div>
@@ -47,23 +49,21 @@ const App = () => {
                     </div>
                 </div>
                 <div className="user-settings-buttons">
-                    <button className="notification-button">
-                        <i className="fas fa-bell"></i>
-                    </button>
-                    <button className="messages-button">
-                        <i className="fas fa-envelope"></i>
-                    </button>
-                    <a href="settingsPage.html">
-                        <button className="settings-button">
-                            <i className="fas fa-cog"></i>
-                        </button>
+                    <a href="/notifications" className="notification-button">
+                        Notifications
+                    </a>
+                    <a href="/messages" className="messages-button">
+                        Messages
+                    </a>
+                    <a href="/profile" className="settings-button">
+                        Profile
                     </a>
                 </div>
             </header>
             <div className="container">
                 <div className="forum-feed">
                     <button className="new-post-button" onClick={handleCreatePost}>
-                        New post <i className="fa-solid fa-plus"></i>
+                        New post
                     </button>
                 </div>
                 <section className="post-list">
