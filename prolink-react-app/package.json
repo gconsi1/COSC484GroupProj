@@ -1,7 +1,7 @@
 {
   "name": "prolink-react-app",
   "version": "0.1.0",
-  "homepage":"cosc-484-group-proj-dwteehuu1-gconsi1s-projects.vercel.app" ,
+  "homepage":"https://cosc-484-group-proj.vercel.app/" ,
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
