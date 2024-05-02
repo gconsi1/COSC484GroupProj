@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import ProfilePage from './ProfilePage';
+import PostPage from './PostPage';
+import SettingsPage from './SettingsPage';
 import './frontEndCSSv2.css'; // Import your CSS file
 
 const App = () => {
-    const handleCreatePost = (event) => {
-        event.preventDefault(); // Prevent the default form submission
-    }
         // Logic for sending login data to backend
         //handle sending login data
     const[userId, setUserId]=useState('');
@@ -32,9 +31,9 @@ const App = () => {
             console.log(data);
         })
     }
-    };
     return (
         <Router>
+            <switch>
             <div className="webpage">
                 <header className="webpage-header">
                     <div className="webpage-header-logo">
@@ -75,43 +74,29 @@ const App = () => {
                         </div>
                     </div>
                     <div className="user-settings-buttons">
-                        <Link to="/notifications" className="notification-button">
-                            Notifications
+                        <Link to="/post" className="post-button">
+                            Post
+                        </Link>
+                        <Link to="/profile" className="profile-button">
+                            Profile
+                        </Link>
+                        <Link to="/settings" className="settings-button">
+                            Settings
                         </Link>
                         <Link to="/messages" className="messages-button">
                             Messages
                         </Link>
-                        <Link to="/profile" className="settings-button">
-                            Profile
-                        </Link>
                     </div>
                 </header>
-                <div className="container">
-                    <Routes>
-                        <Route path="/profile" element={<ProfilePage />} />
-                    </Routes>
-                    <div className="forum-feed">
-                        <button className="new-post-button" onClick={handleCreatePost}>
-                            New post
-                        </button>
-                    </div>
-                    <section className="post-list">
-                        <h2 className="section-title">Latest Posts</h2>
-                        <div className="post">
-                            <p className="post-content">Content goes here</p>
-                        </div>
-                    </section>
-                    <section id="createPost">
-                        <h2 className="section-title">Create New Post</h2>
-                        <form id="createPostForm" onSubmit={handleCreatePost}>
-                            <div className="form-group">
-                                <textarea className="form-control" id="postContent" placeholder="Enter post content" required></textarea>
-                            </div>
-                            <button type="submit">Create Post</button>
-                        </form>
-                    </section>
-                </div>
+
+                <Routes>
+                    <Route path="/profile" element={<ProfilePage />} />
+                    <Route path="/post" element={<PostPage />} />
+                    <Route path="/settings" element={<SettingsPage />} />
+                </Routes>
+                
             </div>
+            </switch>
         </Router>
     );
 };

@@ -23,7 +23,7 @@
     margin-left: 0.5rem;
 }
 /* Top right buttons designs */
-.notification-button, .messages-button, .settings-button, .home-button {
+.notification-button, .messages-button, .settings-button, .home-button, .post-button, .profile-button {
     color:#72a98b;
     background-color: transparent;
     border: none;
@@ -122,17 +122,19 @@
     background-color: #253b45; /* A darker shade for hover effect */
     color: white; /* Making text stand out on hover */
 }
-#profilePic{
+
+#profilePic {
     border-radius: 50%;
-    width: 100%;
-    margin-top: 1%;
-    margin-left: -12%;
+    width: 180px; /* Adjust the width as needed */
+    height: 180px; /* Adjust the height as needed */
+    margin: auto; /* Center horizontally */
+    display: block; /* Ensure it's treated as a block element */
 }
 
 .profilePic {
-    margin-left: 90%;
-    font-size: small;
+    text-align: center; /* Center the text */
 }
+
 
 .createPost{
     margin-top: 2%;
@@ -140,13 +142,14 @@
 }
 
 .topnav {
-    background-color: #333;
+    background-color: #72a98b;
     overflow: hidden;
 }
 
+
 .topnav a {
     float: left;
-    color: #f2f2f2;
+    color: #132833;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -168,7 +171,7 @@
     width: 20%;
     height: 50%;
     border: 1px solid black;
-    padding: 2%;
+    padding: 1%;
     margin-top: 2%;
     margin-left: auto;
     margin-right: auto;
@@ -178,14 +181,32 @@
     max-width: fit-content;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
 }
 
 .allPosts{
-    width: 20%;
+    width: 100%;
     height: 50%;
     border: 1px solid black;
     padding: 2%;
     margin-top: 2%;
     margin-left: auto;
     margin-right: auto;
+}
+
+.resume-upload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row; /* Align items vertically */
+    margin-top: 20px; /* Adjust as needed */
+}
+
+.resume-upload label {
+    margin-bottom: 10px; /* Adjust spacing between label and input */
+    font-size: 20px;
+}
+
+.profPagePosts h2 {
+    text-align: center;
 }
