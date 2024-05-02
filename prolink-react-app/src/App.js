@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import ProfilePage from './ProfilePage';
 import './frontEndCSSv2.css'; // Import your CSS file
@@ -32,7 +32,6 @@ const App = () => {
             console.log(data);
         })
     }
-    };
     return (
         <Router>
             <div className="webpage">
