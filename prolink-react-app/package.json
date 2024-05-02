@@ -1,7 +1,7 @@
 {
   "name": "prolink-react-app",
   "version": "0.1.0",
-  "proxy": "http://localhost:5000"
+  "proxy": "http://localhost:5000",
   "homepage":"https://cosc-484-group-proj.vercel.app/" ,
   "private": true,
   "dependencies": {
