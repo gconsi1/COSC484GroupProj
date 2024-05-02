@@ -6,7 +6,7 @@ import './frontEndCSSv2.css'; // Import your CSS file
 const App = () => {
     const handleCreatePost = (event) => {
         event.preventDefault(); // Prevent the default form submission
-        
+    }
         // Logic for sending login data to backend
         //handle sending login data
     const[userId, setUserId]=useState('');
