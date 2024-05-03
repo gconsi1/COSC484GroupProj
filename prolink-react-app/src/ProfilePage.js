@@ -3,44 +3,40 @@ import React from "react";
 const ProfilePage = () => {
     return (
         <div className="webpage">
-          <header className="webpage-header">
-            <div className="webpage-header-logo">
-              {/* ProLink logo and name */}
-              <div className="logo">
-                <span className="logo-icon">
-                  <img id="ProLinkLogo" src="prolinkdesign.png" alt="ProLink Logo" />
-                </span>
-                <h1 className="ProLink-name">
-                  <span>ProLink</span>
-                </h1>
-              </div>
+            <header className="webpage-header">
+                {/* Header content */}
+            </header>
+            <div className="topnav">
+                <a href="#">Friends</a>
+                <a href="#">Notifications</a>
+                <a href="#">Saved Posts</a>
             </div>
+            <br />
             <div className="profilePic">
-              {/* Corrected self-closing tag */}
-              <img id="profilePic" src="blankProfilePic.png" alt="profile picture" />
-              <p>Name goes here</p>
+                {/* Corrected self-closing tag */}
+                <img id="profilePic" src="blankProfilePic.png" alt="profile picture" />
+                <p>Name goes here</p>
             </div>
-          </header>
-          <div className="topnav">
-            <a href="#">Friends</a>
-            <a href="#">Notifications</a>
-            <a href="#">Messages</a>
-            <a href="#">Account settings</a>
-          </div>
-          <div className="profPagePosts">
-            <div className="startPost">
-              {/* Corrected self-closing tag */}
-              <input type="text" placeholder="Create new post" />
-              <button>Post</button>
+            <div className="profPagePosts">
+              <h2>About Me</h2>
+                <div className="startPost">
+                    {/* Corrected self-closing tag */}
+                    <p>User bio goes here</p>
+                </div>
+                <div className="userPosts">
+                    <h2>Post history</h2>
+                    <div className="allPosts">
+                        <p>User will see their posts here</p>
+                    </div>
+                </div>
+                {/* File upload field */}
+                <div className="resume-upload">
+                    <label htmlFor="resume">Upload Resume:</label>
+                    <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" />
+                </div>
             </div>
-            <div className="userPosts">
-              <h2>Post history</h2>
-              <div className="allPosts">
-                <p>User will see their posts here</p>
-              </div>
-            </div>
-          </div>
         </div>
     );
 };
-export default ProfilePage
+
+export default ProfilePage;
