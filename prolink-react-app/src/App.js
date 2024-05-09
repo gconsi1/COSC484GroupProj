@@ -1,11 +1,14 @@
-import React, {useState} from 'react';
+import React, {} from 'react';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import ProfilePage from './ProfilePage';
 import PostPage from './PostPage';
 import SettingsPage from './SettingsPage';
+import Login from './LoginPage';
+import Signup from './SignupPage';
 import './frontEndCSSv2.css'; // Import your CSS file
 
 const App = () => {
+
         // Logic for sending login data to backend
         //handle sending login data
     const[userId, setUserId]=useState('');
@@ -58,6 +61,7 @@ const App = () => {
             </div>
         );
     };
+
     return (
         <Router>
             <switch>
@@ -81,26 +85,10 @@ const App = () => {
                             </button>
                         </div>
                     </div>
-                    <div className="user-settings">
-                        <div className="wrapper">
-                            <form id="loginForm" onSubmit={handleLogin}>
-                            <h1>Login</h1>
-                            <div className="input-box">
-                                <input type="text" placeholder="Username" onChange={e=>setUserId(e.target.value)}
-                                required />
-                            </div>
-                            <div className="input-box">
-                                <input type="password" placeholder="Password" onChange={e=>setPassword(e.target.value)}
-                                required />
-                            </div>
-                            <div className="remember">
-                                <label><input type="checkbox" />Remember me</label>
-                            </div>
-                            <button type="submit" className="loginButton">Login</button>
-                        </form>
-                        </div>
-                    </div>
                     <div className="user-settings-buttons">
+                        <Link to="/login" className='login-button'>
+                            Login
+                            </Link>
                         <Link to="/" className="home-button">
                             Home
                         </Link>
@@ -124,6 +112,8 @@ const App = () => {
                     <Route path="/profile" element={<ProfilePage />} />
                     <Route path="/post" element={<PostPage addPost={addPost}/>} />
                     <Route path="/settings" element={<SettingsPage />} />
+                    <Route path="/login" element = {<Login/>}/>
+                    <Route path="/signup" element = {<Signup/>}/>
                 </Routes>
                 
             </div>
