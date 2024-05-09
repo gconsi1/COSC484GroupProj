@@ -11,6 +11,9 @@ const App = () => {
     const[userId, setUserId]=useState('');
     const[password, setPassword]=useState('');
 
+    //useState to manage posts
+    const [posts, setPosts] = useState([]);
+
     function handleLogin(event){
         event.preventDefault();
         console.log('clicked');
@@ -31,6 +34,30 @@ const App = () => {
             console.log(data);
         })
     }
+
+    //add a new post to the home page feed
+    const addPost = (postContent) => {
+        const newPost = {
+            id: posts.length + 1,
+            content: postContent
+        };
+        setPosts([...posts, newPost]);
+        console.log("New post added:", newPost)
+    }
+    const Feed = ({ posts }) => {
+        return(
+            <div className="home">
+                <h2>Home Page</h2>
+                <div className="post-list">
+                    {posts.map(post => (
+                        <div key={post.id} className="post">
+                            <p className="post-content">{post.content}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        );
+    };
     return (
         <Router>
             <switch>
@@ -74,6 +101,9 @@ const App = () => {
                         </div>
                     </div>
                     <div className="user-settings-buttons">
+                        <Link to="/" className="home-button">
+                            Home
+                        </Link>
                         <Link to="/post" className="post-button">
                             Post
                         </Link>
@@ -90,8 +120,9 @@ const App = () => {
                 </header>
 
                 <Routes>
+                    <Route path="/" element={<Feed posts={posts} />} />
                     <Route path="/profile" element={<ProfilePage />} />
-                    <Route path="/post" element={<PostPage />} />
+                    <Route path="/post" element={<PostPage addPost={addPost}/>} />
                     <Route path="/settings" element={<SettingsPage />} />
                 </Routes>
                 
@@ -100,5 +131,4 @@ const App = () => {
         </Router>
     );
 };
-
 export default App;

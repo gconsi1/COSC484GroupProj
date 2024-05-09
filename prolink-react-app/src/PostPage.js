@@ -1,33 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const PostPage = () => {
+const PostPage = ({addPost}) => {
+
+    const [postContent, setPostContent] = useState('');
 
     const handleCreatePost = (event) => {
         event.preventDefault(); // Prevent the default form submission
+        if(postContent.trim() !== '') {
+            console.log('Post created with: ', postContent);
+            addPost(postContent);
+            setPostContent('');
+        } else {
+            alert('Post not created');
+        }
     }
     
     return (
         <div className="container">
-                <div className="forum-feed">
-                    <button className="new-post-button" onClick={handleCreatePost}>
-                        New post
-                    </button>
-                </div>
-                <section className="post-list">
-                    <h2 className="section-title">Latest Posts</h2>
-                    <div className="post">
-                        <p className="post-content">Content goes here</p>
+            <section id="createPost">
+                <h2 className="newPost">Create New Post</h2>
+                <form id="createPostForm" onSubmit={handleCreatePost}>
+                    <div className="form-content">
+                        <textarea className="form-control" id="postContent" placeholder="Create post here" value={postContent} onChange={(e) => setPostContent(e.target.value)} required>
+                        </textarea>
                     </div>
-                </section>
-                <section id="createPost">
-                    <h2 className="section-title">Create New Post</h2>
-                    <form id="createPostForm" onSubmit={handleCreatePost}>
-                        <div className="form-group">
-                            <textarea className="form-control" id="postContent" placeholder="Enter post content" required></textarea>
-                        </div>
-                        <button type="submit">Create Post</button>
-                    </form>
-                </section>
+                    <button type="submit">Post</button>
+                </form>
+            </section>
         </div>
     );
 };
