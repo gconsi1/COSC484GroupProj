@@ -49,7 +49,7 @@ app.post("/api/signup", async (req, res)=>{
     try {
         // Create a new user document and save it to the database
 
-        if(!tempUser && !email){
+        if(!tempUser && !tempEmail){
         const newUser = await signup.create({ userId, password, email });
         res.status(201).json({ message: 'User created successfully', user: newUser });
         }
