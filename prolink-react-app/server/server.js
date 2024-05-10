@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const mongodb = require('mongodb');
 const jwt = require('jsonwebtoken');
 const { type } = require("os");
+const {createTokens, validateTokens} = require('./JWT');
 
 const app = express();
 app.use(bodyParser.json());
@@ -101,6 +102,7 @@ app.post("/api/login", async (req, res) =>{
     const{userId, password} = req.body;
 
     const tryLogin = await login.findOne({userId});
+
     if(!tryLogin){
         res.status(401).json({success: false, message: 'Username not found'});
     }
@@ -108,13 +110,21 @@ app.post("/api/login", async (req, res) =>{
         res.status(401).json({success: false, message: 'password incorrect'})
     }
     else{
-        const token = jwt.sign({ username: userId }, "S-KEY");
-        res.status(200).json({message: 'Login completed', success: true, token: token})
+        const getEmail = await signup.findOne({userId})
+        const token = createTokens(getEmail);
+        res.cookie('token', token, { httpOnly: true });
+        res.status(200).json({message: 'Login completed', 
+        success: true, 
+        token: token, 
+        userId: userId, 
+        email: getEmail.email})
     }
 
 })
 
-}
+app.get('/api/user-auth', validateTokens, (req, res)=>{
+    res.json({ success: true, message: 'User is authenticated' });
+})
 catch(error){
     console.log('error connecting to database');
 }
