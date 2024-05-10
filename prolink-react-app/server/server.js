@@ -45,6 +45,7 @@ const postSchema = new mongoose.Schema({
 });
 const post = mongoose.model('post', postSchema, postData);
 
+//endpoint for creating posts
 app.post("/api/post", async (req, res) => {
     const {userId, content } = req.body;
 
@@ -54,6 +55,19 @@ app.post("/api/post", async (req, res) => {
     } catch (error) {
         console.error('Error creating post:', error);
         res.status(500).json({error: 'An unexpected error occured'});
+    }
+});
+
+//endpoint for retrieving posts for a specific user
+app.post("api/post/:userId", async (req, res) => {
+    const userId = req.params.userId;
+
+    try {
+        const userPosts = await post.find({ userId });
+        res.status(200).json(userPosts);
+    } catch (error) {
+        console.error('Error retrieving posts: ', error);
+        res.status(500).json({error: 'An unexpected error occurred' });
     }
 });
 //post methods to handle backend operations
