@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const mongodb = require('mongodb');
 const jwt = require('jsonwebtoken');
+const { type } = require("os");
 
 const app = express();
 app.use(bodyParser.json());
@@ -36,6 +37,13 @@ const loginSchema = new mongoose.Schema({
 })
 const login = mongoose.model('login', loginSchema, userData)
 
+//post schema
+const postSchema = new mongoose.Schema({
+    userId: String,
+    content: String,
+    dateCreated: {type: Date, default: Date.now}
+});
+const post = mongoose.model('Post', postSchema, postData);
 
 //post methods to handle backend operations
 app.post("/api/signup", async (req, res)=>{
