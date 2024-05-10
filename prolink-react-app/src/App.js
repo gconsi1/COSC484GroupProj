@@ -6,8 +6,11 @@ import SettingsPage from './SettingsPage';
 import Login from './LoginPage';
 import Signup from './SignupPage';
 import './frontEndCSSv2.css'; // Import your CSS file
+import Authentication from './Authentication';
 
 const App = () => {
+
+        const isLoggedIn = Authentication();
 
         // Logic for sending login data to backend
         //handle sending login data
@@ -60,6 +63,13 @@ const App = () => {
                 </div>
             </div>
         );
+    };
+        const LoginGuard = () => {
+        if (isLoggedIn) {
+            return <Navigate to="/" />;
+        } else {
+            return <Login/>;
+        }
     };
 
     return (
