@@ -43,8 +43,19 @@ const postSchema = new mongoose.Schema({
     content: String,
     dateCreated: {type: Date, default: Date.now}
 });
-const post = mongoose.model('Post', postSchema, postData);
+const post = mongoose.model('post', postSchema, postData);
 
+app.post("/api/post", async (req, res) => {
+    const {userId, content } = req.body;
+
+    try {
+        const newPost = await post.create({userId, content});
+        res.status(201).json({message: 'Post created successfully', post: newPost});
+    } catch (error) {
+        console.error('Error creating post:', error);
+        res.status(500).json({error: 'An unexpected error occured'});
+    }
+});
 //post methods to handle backend operations
 app.post("/api/signup", async (req, res)=>{
     console.log(req.body);
