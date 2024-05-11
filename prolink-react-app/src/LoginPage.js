@@ -8,38 +8,42 @@ const LoginPage = () =>{
         const[userId, setUserId]=useState('');
         const[password, setPassword]=useState('');
     
-        function handleLogin(event){
+        function handleLogin(event) {
             event.preventDefault();
             event.target.reset();
             console.log('clicked');
-    
+        
             let userData = {
-                userId:userId,
-                password:password
+                userId: userId,
+                password: password
             }
-    
+        
             fetch("/api/login", {
                 method: "post",
                 headers: {
-                "Content-Type": "application/json"
+                    "Content-Type": "application/json"
                 },
                 body: JSON.stringify(userData)
-    
-            }).then(response=>response.json()).then(data=>{
-                setUserId(data.userId);
-                console.log(data);
+            }).then(response => response.json()).then(data => {
+                console.log('Login response:', data);
                 if (data.success === true) {
                     const token = data.token;
                     const userId = data.userId;
                     
                     // Save userId to localStorage if needed
                     localStorage.setItem('jwt', token);
+                    console.log('Token saved to localStorage:', token);
                     
                     // Update userId state in App.js
                     setUserId(userId);
+                } else {
+                    console.error('Login failed:', data.error);
                 }
-            })
-        }
+            }).catch(error => {
+                console.error('Error during login:', error);
+            });
+        }        
+        
 
     return(
             <div className="wrapper">

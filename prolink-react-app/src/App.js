@@ -7,6 +7,7 @@ import Login from './LoginPage';
 import Signup from './SignupPage';
 import './frontEndCSSv2.css'; // Import your CSS file
 import Authentication from './Authentication';
+import Logout from './LogOut';
 
 const App = () => {
 
@@ -29,6 +30,7 @@ const App = () => {
         setPosts([...posts, newPost]);
         console.log("New post added:", newPost);
     };
+    
     const Feed = ({ posts }) => {
         return(
             <div className="home">
@@ -78,6 +80,9 @@ const App = () => {
                         <Link to="/login" className='login-button'>
                             Login
                             </Link>
+                        <Link to="/logout" className="logout-button">
+                            Logout
+                        </Link>
                         <Link to="/" className="home-button">
                             Home
                         </Link>
@@ -103,6 +108,7 @@ const App = () => {
                     <Route path="/settings" element={<SettingsPage />} />
                     <Route path="/login" element = {<Login/>}/>
                     <Route path="/signup" element = {<Signup/>}/>
+                    <Route path="/logout" element = {<Logout/>}/>
                 </Routes>
                 
             </div>

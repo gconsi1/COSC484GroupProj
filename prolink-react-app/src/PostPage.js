@@ -1,34 +1,44 @@
 import React, { useState } from 'react';
 
-const PostPage = ({addPost, userId}) => {
 
+const PostPage = ({ addPost }) => {
     const [postContent, setPostContent] = useState('');
 
-    const handleCreatePost = async (event) => {
+    function handleCreatePost(event) {
         event.preventDefault();
         if (postContent.trim() !== '') {
             try {
-                const response = await fetch("/api/post", {
+                // Decode the token to get user information
+                const token = localStorage.getItem('jwt');
+                const tokenPayload = token.split('.')[1]; // Get the payload part of the token
+                const decodedPayload = atob(tokenPayload); // Decode base64 encoded payload
+                const parsedPayload = JSON.parse(decodedPayload); // Parse JSON from decoded payload
+                const userId = parsedPayload.userId;
+    
+                fetch("/api/post", {
                     method: "post",
                     headers: {
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({ userId, content: postContent })
+                }).then(response => response.json()).then(data => {
+                    if (data.success === true) {
+                        addPost(postContent, data.post.userId);
+                        setPostContent('');
+                    } else {
+                        console.error('Failed to create post:', data.error);
+                    }
+                }).catch(error => {
+                    console.error('Error creating post:', error);
                 });
-                const data = await response.json();
-                if (response.ok) {
-                    addPost(postContent, data.post.userId); // Use userId from the response data
-                    setPostContent('');
-                } else {
-                    console.error('Failed to create post:', data.error);
-                }
             } catch (error) {
-                console.error('Error creating post:', error);
+                console.error('Error decoding token:', error);
             }
         } else {
             alert('Post content cannot be empty');
         }
     }
+    
     
     return (
         <div className="container">
@@ -45,4 +55,4 @@ const PostPage = ({addPost, userId}) => {
         </div>
     );
 };
-export default PostPage
+export default PostPage;
