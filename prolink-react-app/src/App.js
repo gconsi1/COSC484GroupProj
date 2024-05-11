@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Routes, Navigate } from 'react-router-dom';
 import ProfilePage from './ProfilePage';
 import PostPage from './PostPage';
 import SettingsPage from './SettingsPage';
@@ -10,46 +10,25 @@ import Authentication from './Authentication';
 
 const App = () => {
 
-        const isLoggedIn = Authentication();
+    const isLoggedIn = Authentication();
 
-        // Logic for sending login data to backend
-        //handle sending login data
+    // Logic for sending login data to backend
+    //handle sending login data
     const[userId, setUserId]=useState('');
-    const[password, setPassword]=useState('');
 
     //useState to manage posts
     const [posts, setPosts] = useState([]);
 
-    function handleLogin(event){
-        event.preventDefault();
-        console.log('clicked');
-
-        let userData = {
-            userId:userId,
-            password:password
-        }
-
-        fetch("/api/login", {
-            method: "post",
-            headers: {
-            "Content-Type": "application/json"
-            },
-            body: JSON.stringify(userData)
-
-        }).then(response=>response.json()).then(data=>{
-            console.log(data);
-        })
-    }
-
     //add a new post to the home page feed
-    const addPost = (postContent) => {
+    const addPost = (postContent, userId) => { // Update addPost function
         const newPost = {
             id: posts.length + 1,
-            content: postContent
+            content: postContent,
+            userId: userId // Store userId with the post
         };
         setPosts([...posts, newPost]);
-        console.log("New post added:", newPost)
-    }
+        console.log("New post added:", newPost);
+    };
     const Feed = ({ posts }) => {
         return(
             <div className="home">
@@ -120,7 +99,7 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<Feed posts={posts} />} />
                     <Route path="/profile" element={<ProfilePage />} />
-                    <Route path="/post" element={<PostPage addPost={addPost}/>} />
+                    <Route path="/post" element={<PostPage addPost={addPost} userId={userId} />} />
                     <Route path="/settings" element={<SettingsPage />} />
                     <Route path="/login" element = {<Login/>}/>
                     <Route path="/signup" element = {<Signup/>}/>

@@ -26,13 +26,17 @@ const LoginPage = () =>{
                 body: JSON.stringify(userData)
     
             }).then(response=>response.json()).then(data=>{
+                setUserId(data.userId);
                 console.log(data);
-                if(data.success === true){
+                if (data.success === true) {
                     const token = data.token;
-                    //const user = data.userId;
-
-                    //saving to local storage
-                    localStorage.setItem('jwt', token)
+                    const userId = data.userId;
+                    
+                    // Save userId to localStorage if needed
+                    localStorage.setItem('jwt', token);
+                    
+                    // Update userId state in App.js
+                    setUserId(userId);
                 }
             })
         }
@@ -58,10 +62,6 @@ const LoginPage = () =>{
                         </Link></button>
             </form>
             </div>
-
-            
-                    
-        
     )
 }
 

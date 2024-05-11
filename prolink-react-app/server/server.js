@@ -13,7 +13,7 @@ app.listen(5000, () =>console.log('server running on port 5000'));
 app.use(bodyParser.json());
 
 //get login data to databse
-try{
+try {
 mongoose.connect('mongodb+srv://jaymehta0113:prolink484@prolinkcluster.wkozyum.mongodb.net/prolink?retryWrites=true&w=majority&appName=ProlinkCluster');
 
 
@@ -46,31 +46,33 @@ const postSchema = new mongoose.Schema({
 });
 const post = mongoose.model('post', postSchema, postData);
 
-//endpoint for creating posts
+// endpoint for creating posts
 app.post("/api/post", async (req, res) => {
-    const {userId, content } = req.body;
+    const { userId, content } = req.body;
 
     try {
-        const newPost = await post.create({userId, content});
-        res.status(201).json({message: 'Post created successfully', post: newPost});
+        const newPost = await post.create({ userId, content }); // Store userId
+        res.status(201).json({ message: 'Post created successfully', post: newPost });
     } catch (error) {
         console.error('Error creating post:', error);
-        res.status(500).json({error: 'An unexpected error occured'});
+        res.status(500).json({ error: 'An unexpected error occurred' });
     }
 });
 
-//endpoint for retrieving posts for a specific user
-app.post("api/post/:userId", async (req, res) => {
+// endpoint for retrieving posts for a specific user
+app.get("/api/post/:userId", async (req, res) => {
     const userId = req.params.userId;
 
     try {
-        const userPosts = await post.find({ userId });
+        const userPosts = await post.find({ userId }); // Fetch posts for specific userId
         res.status(200).json(userPosts);
     } catch (error) {
         console.error('Error retrieving posts: ', error);
-        res.status(500).json({error: 'An unexpected error occurred' });
+        res.status(500).json({ error: 'An unexpected error occurred' });
     }
 });
+
+
 //post methods to handle backend operations
 app.post("/api/signup", async (req, res)=>{
     console.log(req.body);
@@ -125,6 +127,9 @@ app.post("/api/login", async (req, res) =>{
 app.get('/api/user-auth', validateTokens, (req, res)=>{
     res.json({ success: true, message: 'User is authenticated' });
 })
+}
+
 catch(error){
     console.log('error connecting to database');
 }
+

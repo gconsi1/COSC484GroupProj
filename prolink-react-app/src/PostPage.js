@@ -1,17 +1,32 @@
 import React, { useState } from 'react';
 
-const PostPage = ({addPost}) => {
+const PostPage = ({addPost, userId}) => {
 
     const [postContent, setPostContent] = useState('');
 
-    const handleCreatePost = (event) => {
-        event.preventDefault(); // Prevent the default form submission
-        if(postContent.trim() !== '') {
-            console.log('Post created with: ', postContent);
-            addPost(postContent);
-            setPostContent('');
+    const handleCreatePost = async (event) => {
+        event.preventDefault();
+        if (postContent.trim() !== '') {
+            try {
+                const response = await fetch("/api/post", {
+                    method: "post",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ userId, content: postContent })
+                });
+                const data = await response.json();
+                if (response.ok) {
+                    addPost(postContent, data.post.userId); // Use userId from the response data
+                    setPostContent('');
+                } else {
+                    console.error('Failed to create post:', data.error);
+                }
+            } catch (error) {
+                console.error('Error creating post:', error);
+            }
         } else {
-            alert('Post not created');
+            alert('Post content cannot be empty');
         }
     }
     
