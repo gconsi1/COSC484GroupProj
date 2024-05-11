@@ -59,6 +59,18 @@ app.post("/api/post", async (req, res) => {
     }
 });
 
+// Endpoint for retrieving all posts
+app.get("/api/post", async (req, res) => {
+    try {
+        const allPosts = await post.find();
+        res.status(200).json(allPosts);
+    } catch (error) {
+        console.error('Error retrieving posts:', error);
+        res.status(500).json({ error: 'An unexpected error occurred' });
+    }
+});
+
+
 // endpoint for retrieving posts for a specific user
 app.get("/api/post/:userId", async (req, res) => {
     const userId = req.params.userId;

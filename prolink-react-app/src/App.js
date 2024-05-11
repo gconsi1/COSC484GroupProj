@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect} from 'react';
 import { BrowserRouter as Router, Route, Link, Routes, Navigate } from 'react-router-dom';
 import ProfilePage from './ProfilePage';
 import PostPage from './PostPage';
@@ -8,17 +8,25 @@ import Signup from './SignupPage';
 import './frontEndCSSv2.css'; // Import your CSS file
 import Authentication from './Authentication';
 import Logout from './LogOut';
+import axios from 'axios';
+
 
 const App = () => {
 
-    const isLoggedIn = Authentication();
-
-    // Logic for sending login data to backend
-    //handle sending login data
-    const[userId, setUserId]=useState('');
-
     //useState to manage posts
     const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        axios.get('/api/post')
+            .then(response => {
+                setPosts(response.data);
+                console.log('Fetched posts:', response.data); // Log fetched posts
+            })
+            .catch(error => {
+                console.error('Error fetching posts:', error);
+            });
+    }, []);    
+
 
     //add a new post to the home page feed
     const addPost = (postContent, userId) => { // Update addPost function
@@ -30,29 +38,28 @@ const App = () => {
         setPosts([...posts, newPost]);
         console.log("New post added:", newPost);
     };
-    
+
     const Feed = ({ posts }) => {
-        return(
+        return (
             <div className="home">
                 <h2>Home Page</h2>
                 <div className="post-list">
                     {posts.map(post => (
-                        <div key={post.id} className="post">
-                            <p className="post-content">{post.content}</p>
+                        <div key={post._id} className="post">
+                            {/* Display userId and post content on the same line */}
+                            <p className="post-content">
+                                <span style={{ fontWeight: 'bold' }}>{post.userId}:</span> {/* Bold userId */}
+                                {' '}
+                                {post.content}
+                            </p>
                         </div>
                     ))}
                 </div>
             </div>
         );
-    };
-        const LoginGuard = () => {
-        if (isLoggedIn) {
-            return <Navigate to="/" />;
-        } else {
-            return <Login/>;
-        }
-    };
-
+    };    
+    
+        
     return (
         <Router>
             <switch>
@@ -104,7 +111,7 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<Feed posts={posts} />} />
                     <Route path="/profile" element={<ProfilePage />} />
-                    <Route path="/post" element={<PostPage addPost={addPost} userId={userId} />} />
+                    <Route path="/post" element={<PostPage addPost={addPost} />} />
                     <Route path="/settings" element={<SettingsPage />} />
                     <Route path="/login" element = {<Login/>}/>
                     <Route path="/signup" element = {<Signup/>}/>
