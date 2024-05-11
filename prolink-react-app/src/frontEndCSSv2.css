@@ -23,7 +23,7 @@
     margin-left: 0.5rem;
 }
 /* Top right buttons designs */
-.notification-button, .messages-button, .settings-button, .home-button, .post-button, .profile-button {
+.notification-button, .messages-button, .settings-button, .home-button, .post-button, .profile-button, .login-button, .logout-button {
     color:#72a98b;
     background-color: transparent;
     border: none;
