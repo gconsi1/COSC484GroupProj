@@ -6,8 +6,6 @@ import SettingsPage from './SettingsPage';
 import Login from './LoginPage';
 import Signup from './SignupPage';
 import './frontEndCSSv2.css'; // Import your CSS file
-import Authentication from './Authentication';
-import Logout from './LogOut';
 import axios from 'axios';
 import ChatMessage from './ChatMessage'; // Ensure you've created this component
 
@@ -86,9 +84,6 @@ const App = () => {
                         <Link to="/login" className='login-button'>
                             Login
                             </Link>
-                        <Link to="/logout" className="logout-button">
-                            Logout
-                        </Link>
                         <Link to="/post" className="post-button">
                             Post
                         </Link>
@@ -112,7 +107,6 @@ const App = () => {
                     <Route path="/settings" element={<SettingsPage />} />
                     <Route path="/login" element = {<Login/>}/>
                     <Route path="/signup" element = {<Signup/>}/>
-                    <Route path="/logout" element = {<Logout/>}/>
                     <Route path="/profile/:userId" element={<ProfilePage />} />
                 </Routes>
                 

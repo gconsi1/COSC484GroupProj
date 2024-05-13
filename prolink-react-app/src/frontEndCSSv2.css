@@ -31,7 +31,7 @@
     transition: background-color 0.3s;
 }
 /* Top right buttons designs */
-.notification-button, .messages-button, .settings-button, .home-button, .post-button, .profile-button, .login-button, .logout-button {
+.notification-button, .messages-button, .settings-button, .home-button, .post-button, .profile-button, .login-button, .logout-button, .about-button {
     color:#72a98b;
     background-color: transparent;
     border: none;
@@ -271,7 +271,7 @@
 
 .submit-post {
     padding: 10px 20px;
-    background-color: #0066cc;
+    background-color: #72a98b;
     color: white;
     border: none;
     border-radius: 4px;
@@ -279,7 +279,7 @@
 }
 
 .submit-post:hover {
-    background-color: #0055a5;
+    background-color: #132833;
 }
 .post {
     background-color: #fff; /* White background for each post */
