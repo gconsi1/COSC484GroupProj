@@ -9,6 +9,9 @@ import './frontEndCSSv2.css'; // Import your CSS file
 import Authentication from './Authentication';
 import Logout from './LogOut';
 import axios from 'axios';
+import ChatMessage from './ChatMessage'; // Ensure you've created this component
+
+
 
 
 const App = () => {
@@ -45,19 +48,12 @@ const App = () => {
                 <h2>Home Page</h2>
                 <div className="post-list">
                     {posts.map(post => (
-                        <div key={post._id} className="post">
-                            {/* Display userId and post content on the same line */}
-                            <p className="post-content">
-                                <span style={{ fontWeight: 'bold' }}>{post.userId}:</span> {/* Bold userId */}
-                                {' '}
-                                {post.content}
-                            </p>
-                        </div>
+                        <ChatMessage key={post._id} userId={post.userId} content={post.content} />
                     ))}
                 </div>
             </div>
         );
-    };    
+    };
     
         
     return (
@@ -116,6 +112,7 @@ const App = () => {
                     <Route path="/login" element = {<Login/>}/>
                     <Route path="/signup" element = {<Signup/>}/>
                     <Route path="/logout" element = {<Logout/>}/>
+                    <Route path="/profile/:userId" element={<ProfilePage />} />
                 </Routes>
                 
             </div>

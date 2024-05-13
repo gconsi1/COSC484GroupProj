@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-
 const PostPage = ({ addPost }) => {
     const [postContent, setPostContent] = useState('');
+    const [notification, setNotification] = useState('');
 
     function handleCreatePost(event) {
         event.preventDefault();
@@ -22,17 +22,22 @@ const PostPage = ({ addPost }) => {
                     },
                     body: JSON.stringify({ userId, content: postContent })
                 }).then(response => response.json()).then(data => {
-                    if (data.success === true) {
+                    if (data.message === 'Post created successfully') {
                         addPost(postContent, data.post.userId);
                         setPostContent('');
+                        setNotification('Your post was successfully created!');
+                        setTimeout(() => setNotification(''), 3000); // Remove notification after 3 seconds
                     } else {
                         console.error('Failed to create post:', data.error);
+                        setNotification('Failed to create post.');
                     }
                 }).catch(error => {
                     console.error('Error creating post:', error);
+                    setNotification('Error creating post.');
                 });
             } catch (error) {
                 console.error('Error decoding token:', error);
+                setNotification('Error decoding token.');
             }
         } else {
             alert('Post content cannot be empty');
@@ -52,8 +57,10 @@ const PostPage = ({ addPost }) => {
                     required
                 />
                 <button type="submit" className="submit-post">Post</button>
+                {notification && <div className="notification">{notification}</div>}
             </form>
         </div>
     );
 };
+
 export default PostPage;
