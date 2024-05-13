@@ -98,9 +98,10 @@ const App = () => {
                         <Link to="/settings" className="settings-button">
                             Settings
                         </Link>
-                        <Link to="/messages" className="messages-button">
-                            Messages
+                        <Link to="/about" className="about-button">
+                            About
                         </Link>
+                        
                     </div>
                 </header>
 
