@@ -41,17 +41,18 @@ const PostPage = ({ addPost }) => {
     
     
     return (
-        <div className="container">
-            <section id="createPost">
-                <h2 className="newPost">Create New Post</h2>
-                <form id="createPostForm" onSubmit={handleCreatePost}>
-                    <div className="form-content">
-                        <textarea className="form-control" id="postContent" placeholder="Create post here" value={postContent} onChange={(e) => setPostContent(e.target.value)} required>
-                        </textarea>
-                    </div>
-                    <button type="submit">Post</button>
-                </form>
-            </section>
+        <div className="post-page">
+            <form onSubmit={handleCreatePost} className="post-form">
+                <h2>Create New Post</h2>
+                <textarea
+                    className="post-input"
+                    placeholder="What's on your mind?"
+                    value={postContent}
+                    onChange={(e) => setPostContent(e.target.value)}
+                    required
+                />
+                <button type="submit" className="submit-post">Post</button>
+            </form>
         </div>
     );
 };

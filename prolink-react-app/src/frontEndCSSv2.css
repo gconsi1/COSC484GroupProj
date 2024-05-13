@@ -19,8 +19,16 @@
 .new-post-button:hover {
     background-color: #253b45;
 }
-.new-post-button i {
-    margin-left: 0.5rem;
+.new-post-button {
+    background-color: #132833; /* Dark background for contrast */
+    color: #72a98b; /* Light text for readability */
+    padding: 12px 24px; /* Larger padding for a better click area */
+    font-size: 18px; /* Larger font size for visibility */
+    border-radius: 6px; /* Smoothed corners */
+    cursor: pointer; /* Cursor indication for clickability */
+    display: inline-block; /* Ensures proper padding and margins */
+    margin: 10px 0; /* Space from other elements */
+    transition: background-color 0.3s; /* Smooth transition for hover */
 }
 /* Top right buttons designs */
 .notification-button, .messages-button, .settings-button, .home-button, .post-button, .profile-button, .login-button, .logout-button {
@@ -64,6 +72,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%; /* Ensure full width */
+    max-width: 800px; /* Limit the maximum width */
+    margin: 20px auto; /* Centering the container */
+    padding: 20px;
+    background-color: #fff; /* Light background for the post area */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Subtle shadow for depth */
 }
 .forum-feed, .post-list, #createPost {
     width: 65%;
@@ -135,10 +150,23 @@
     text-align: center; /* Center the text */
 }
 
+#postContent {
+    width: 100%; /* Full width within the container */
+    height: 120px; /* Enough space to type a meaningful post */
+    padding: 10px;
+    border: 1px solid #ccc; /* Subtle border */
+    border-radius: 4px; /* Rounded corners */
+    resize: none; /* Disable resizing to maintain style */
+    font-size: 1rem; /* Readable text size */
+    margin-top: 10px; /* Space from previous elements */
+}
 
-.createPost{
-    margin-top: 2%;
-    margin-left: 90%;
+
+.createPost {
+    display: flex;
+    justify-content: flex-end; /* Align the post button to the right */
+    width: 100%; /* Full width to align right correctly */
+    margin-top: 10px; /* Space above the button */
 }
 
 .topnav {
@@ -209,4 +237,53 @@
 
 .profPagePosts h2 {
     text-align: center;
+}
+
+.forum-feed {
+    margin-top: 20px;
+    border-top: 2px solid #132833; /* A darker border for contrast */
+    padding-top: 20px;
+    width: 100%; /* Full width for better layout */
+    max-width: 800px; /* Restrict maximum width for readability */
+    margin: auto; /* Center the feed */
+    background-color: #f9f9f9; /* Slightly off-white background for softness */
+}
+
+.post-list {
+    margin-top: 10px;
+}
+.post-page {
+    padding: 20px;
+    margin: 20px auto;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.post-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.post-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 100px;
+    resize: none;
+}
+
+.submit-post {
+    padding: 10px 20px;
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.submit-post:hover {
+    background-color: #0055a5;
 }
