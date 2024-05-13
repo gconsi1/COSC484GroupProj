@@ -4,6 +4,7 @@ import ProfilePage from './ProfilePage';
 import PostPage from './PostPage';
 import SettingsPage from './SettingsPage';
 import Login from './LoginPage';
+import AboutPage from './About';
 import Signup from './SignupPage';
 import './frontEndCSSv2.css'; // Import your CSS file
 import axios from 'axios';
@@ -108,6 +109,7 @@ const App = () => {
                     <Route path="/login" element = {<Login/>}/>
                     <Route path="/signup" element = {<Signup/>}/>
                     <Route path="/profile/:userId" element={<ProfilePage />} />
+                    <Route path="/about" element={<AboutPage />} />
                 </Routes>
                 
             </div>
