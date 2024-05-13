@@ -5,7 +5,6 @@ const SettingsPage = () => {
     const handleLogout = () => {
         localStorage.removeItem('jwt'); // Clear token from localStorage
         // Optionally clear any other state related to the authenticated user
-        // Example: setUser(null);
     };
 
     return (
