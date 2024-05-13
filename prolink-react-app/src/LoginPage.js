@@ -69,7 +69,7 @@ const LoginPage = () =>{
                 <div className="remember">
                     <label><input type="checkbox" />Remember me</label>
                 </div>
-                <button type="submit" className="loginButton"style={{ padding: '15px', width: '100%', padding: '15px', backgroundColor: '#72a98b', color: 'white', border: 'none', cursor: 'pointer', fontSize: '1em' }}>Login</button>
+                <button type="submit" className="loginButton"style={{width: '100%', padding: '15px', backgroundColor: '#72a98b', color: 'white', border: 'none', cursor: 'pointer', fontSize: '1em' }}>Login</button>
                 <button className="to-signup" style ={{alignItems: 'center'}}><Link to="/signup" className='signup-button'>
                             Sign up instead
                         </Link></button>

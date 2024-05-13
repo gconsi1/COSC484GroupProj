@@ -9,6 +9,7 @@ import './frontEndCSSv2.css'; // Import your CSS file
 import Authentication from './Authentication';
 import Logout from './LogOut';
 import axios from 'axios';
+import About from './About';
 
 
 const App = () => {
@@ -102,9 +103,10 @@ const App = () => {
                         <Link to="/settings" className="settings-button">
                             Settings
                         </Link>
-                        <Link to="/messages" className="messages-button">
-                            Messages
+                        <Link to="/about" className="about-button">
+                            About
                         </Link>
+                        
                     </div>
                 </header>
 
@@ -116,6 +118,7 @@ const App = () => {
                     <Route path="/login" element = {<Login/>}/>
                     <Route path="/signup" element = {<Signup/>}/>
                     <Route path="/logout" element = {<Logout/>}/>
+                    <Route path="/about" element = {<About/>}/>
                 </Routes>
                 
             </div>
