@@ -167,6 +167,7 @@
     justify-content: flex-end; /* Align the post button to the right */
     width: 100%; /* Full width to align right correctly */
     margin-top: 10px; /* Space above the button */
+    color: #72a98b;
 }
 
 .topnav {
@@ -271,7 +272,7 @@
 
 .submit-post {
     padding: 10px 20px;
-    background-color: #0066cc;
+    background-color: #72a98b;
     color: white;
     border: none;
     border-radius: 4px;

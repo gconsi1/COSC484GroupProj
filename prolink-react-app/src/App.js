@@ -6,8 +6,6 @@ import SettingsPage from './SettingsPage';
 import Login from './LoginPage';
 import Signup from './SignupPage';
 import './frontEndCSSv2.css'; // Import your CSS file
-import Authentication from './Authentication';
-import Logout from './LogOut';
 import axios from 'axios';
 import About from './About';
 
@@ -90,9 +88,6 @@ const App = () => {
                         </Link>
                         <Link to="/login" className='login-button'>
                             Login
-                            </Link>
-                        <Link to="/logout" className="logout-button">
-                            Logout
                         </Link>
                         <Link to="/post" className="post-button">
                             Post
@@ -103,7 +98,7 @@ const App = () => {
                         <Link to="/settings" className="settings-button">
                             Settings
                         </Link>
-                        <Link to="/about" className="about-button">
+                        <Link to="/about" className="settings-button">
                             About
                         </Link>
                         
@@ -117,7 +112,6 @@ const App = () => {
                     <Route path="/settings" element={<SettingsPage />} />
                     <Route path="/login" element = {<Login/>}/>
                     <Route path="/signup" element = {<Signup/>}/>
-                    <Route path="/logout" element = {<Logout/>}/>
                     <Route path="/about" element = {<About/>}/>
                 </Routes>
                 

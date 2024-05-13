@@ -1,6 +1,13 @@
 import React from "react";
 
 const SettingsPage = () => {
+
+    const handleLogout = () => {
+        localStorage.removeItem('jwt'); // Clear token from localStorage
+        // Optionally clear any other state related to the authenticated user
+        // Example: setUser(null);
+    };
+
     return (
         <div className="settings-content">
             <section className="profile-settings">
@@ -24,6 +31,9 @@ const SettingsPage = () => {
 
                     <button type="submit">Save Account Settings</button>
                 </form>
+            </section>
+            <section className="account-settings">
+                <button onClick={handleLogout}>Logout</button>
             </section>
         </div>
 
