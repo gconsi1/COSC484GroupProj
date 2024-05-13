@@ -41,7 +41,7 @@ const App = () => {
 
     const Feed = ({ posts }) => {
         return (
-            <div className="home">
+            <div className="forum-feed">
                 <h2>Home Page</h2>
                 <div className="post-list">
                     {posts.map(post => (
@@ -84,14 +84,14 @@ const App = () => {
                         </div>
                     </div>
                     <div className="user-settings-buttons">
+                    <Link to="/" className="home-button">
+                            Home
+                        </Link>
                         <Link to="/login" className='login-button'>
                             Login
                             </Link>
                         <Link to="/logout" className="logout-button">
                             Logout
-                        </Link>
-                        <Link to="/" className="home-button">
-                            Home
                         </Link>
                         <Link to="/post" className="post-button">
                             Post

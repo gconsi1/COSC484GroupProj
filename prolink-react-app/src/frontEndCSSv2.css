@@ -20,15 +20,15 @@
     background-color: #253b45;
 }
 .new-post-button {
-    background-color: #132833; /* Dark background for contrast */
-    color: #72a98b; /* Light text for readability */
-    padding: 12px 24px; /* Larger padding for a better click area */
-    font-size: 18px; /* Larger font size for visibility */
-    border-radius: 6px; /* Smoothed corners */
-    cursor: pointer; /* Cursor indication for clickability */
-    display: inline-block; /* Ensures proper padding and margins */
-    margin: 10px 0; /* Space from other elements */
-    transition: background-color 0.3s; /* Smooth transition for hover */
+    background-color: #132833; 
+    color: #72a98b; 
+    padding: 12px 24px; 
+    font-size: 18px; 
+    border-radius: 6px; 
+    cursor: pointer;
+    display: inline-block;
+    margin: 10px 0; 
+    transition: background-color 0.3s;
 }
 /* Top right buttons designs */
 .notification-button, .messages-button, .settings-button, .home-button, .post-button, .profile-button, .login-button, .logout-button {
@@ -239,18 +239,12 @@
     text-align: center;
 }
 
-.forum-feed {
-    margin-top: 20px;
-    border-top: 2px solid #132833; /* A darker border for contrast */
-    padding-top: 20px;
-    width: 100%; /* Full width for better layout */
-    max-width: 800px; /* Restrict maximum width for readability */
-    margin: auto; /* Center the feed */
-    background-color: #f9f9f9; /* Slightly off-white background for softness */
-}
-
-.post-list {
-    margin-top: 10px;
+.forum-feed, .post-list {
+    width: 100%;  /* Use the full width for smaller screens, adjust as needed */
+    max-width: 800px; /* Keeps the feed at a readable maximum width */
+    margin: 20px auto; /* Centering the feed with automatic margins */
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background for the feed */
 }
 .post-page {
     padding: 20px;
@@ -286,4 +280,22 @@
 
 .submit-post:hover {
     background-color: #0055a5;
+}
+.post {
+    background-color: #fff; /* White background for each post */
+    border: 1px solid #ddd; /* Subtle border around each post */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px; /* Padding inside each post */
+    margin-bottom: 15px; /* Space between posts */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Soft shadow for depth */
+}
+
+.post-content {
+    font-size: 1rem; /* Readable text size */
+    color: #333; /* Darker text for better readability */
+    line-height: 1.5; /* Improved line spacing */
+}
+
+.post-content span {
+    font-weight: bold; /* Bold for user IDs or names */
 }
